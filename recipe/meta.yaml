@@ -1,23 +1,23 @@
 {% set name = "swmm-toolkit" %}
-{% set version = "0.15.2" %}
+{% set version = "0.16.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/swmm-toolkit-{{ version }}.tar.gz
-  sha256: bc3d36e6cca656a6d18c4077b9fc429b54b65f8f7f9091dac5f5b7cd5a66f6dc
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: ae213a1b4a0a3c841061bdaf20d74ee37dd45de83eded2d5314362b488066568
 
 build:
   script:
     - export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - export CXXFLAGS="${CXXFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-    
-  number: 2
+
+  number: 0
   skip: true  # [py<38]
-  missing_dso_whitelist:  # [win]
+  missing_dso_whitelist:   # [win]
     - "*/swmm5.dll"  # [win]
     - "*/swmm-output.dll"  # [win]
 
