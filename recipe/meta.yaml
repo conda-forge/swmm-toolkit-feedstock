@@ -6,8 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: ae213a1b4a0a3c841061bdaf20d74ee37dd45de83eded2d5314362b488066568
+  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+    sha256: ae213a1b4a0a3c841061bdaf20d74ee37dd45de83eded2d5314362b488066568
+  - git_url: https://github.com/pyswmm/Stormwater-Management-Model
+    git_rev: 24cdf73c3d7cf3bb62f0bff150d5987f1f826889
+    folder: swmm-solver
 
 build:
   script:
