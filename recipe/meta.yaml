@@ -29,8 +29,8 @@ requirements:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - cmake >=3.21
     - make  # [linux]
-    - swig ==4.0.2
-    - ninja ==1.11.1  # [osx]
+    - swig >=4.4.0
+    - ninja  # [osx]
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -39,13 +39,13 @@ requirements:
   host:
     - python
     - setuptools >=42
-    - scikit-build >=0.13
+    - scikit-build-core >=0.4.3
     - pip
     - llvm-openmp  # [osx]
     - libgomp  # [linux]
   run:
     - python
-    - aenum ==3.1.11
+    - aenum >=3.1.11
 
 test:
   imports:
