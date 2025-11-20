@@ -14,10 +14,9 @@ source:
 
 build:
   script:
-    # On osx correct compiler is not being picked so we need to remove linker so it can pick the correct version
-    - python -c "import os; os.environ['CMAKE_ARGS'] = ' '.join([a for a in os.environ.get('CMAKE_ARGS', '').split() if 'CMAKE_LINKER' not in a])"  # [osx]
     - export NO_STABLE_ABI=true  # [py>=313]
-    - export CMAKE_GENERATOR=Ninja
+    - export CMAKE_GENERATOR="Unix Makefiles"  # [osx]
+    - export CMAKE_GENERATOR=Ninja  # [win]
     - export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - export CXXFLAGS="${CXXFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -35,9 +34,9 @@ requirements:
     - python  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - cmake >=3.21
-    - make  # [linux]
     - swig >=4.4.0
-    - ninja  # [osx]
+    - make  # [unix]
+    - ninja  # [win]
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
