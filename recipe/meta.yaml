@@ -14,8 +14,9 @@ source:
 
 build:
   script:
-    - export CC="${CLANG}"  # [osx]
-    - export CXX="${CLANGXX}"  # [osx]
+    - unset CMAKE_LINKER  # [osx]
+    - export NO_STABLE_ABI=true
+    - export CMAKE_GENERATOR=Ninja
     - export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - export CXXFLAGS="${CXXFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
