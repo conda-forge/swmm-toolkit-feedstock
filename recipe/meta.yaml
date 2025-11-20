@@ -14,9 +14,9 @@ source:
 
 build:
   script:
-    - export NO_STABLE_ABI=true  # [py>=313]
-    - export CMAKE_GENERATOR="Unix Makefiles"  # [osx]
-    - export CMAKE_GENERATOR=Ninja  # [win]
+    - export NO_STABLE_ABI=true
+    - export SKBUILD_CMAKE_ARGS="-GUnix Makefiles"  # [unix]
+    - export SKBUILD_CMAKE_ARGS="-GUnix Ninja"  # [win]
     - export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - export CXXFLAGS="${CXXFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
