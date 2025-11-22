@@ -14,8 +14,8 @@ source:
 
 build:
   script:
-    - set NO_STABLE_ABI=true  # [win and py>=313]
-    - export NO_STABLE_ABI=true  # [unix and py>=313]
+    - set NO_STABLE_ABI=true  # [win]
+    - export NO_STABLE_ABI=true  # [unix]
     - export SKBUILD_CMAKE_ARGS="-GUnix Makefiles"  # [unix]
     - export SKBUILD_CMAKE_ARGS="-GUnix Ninja"  # [win]
     - export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"  # [osx]
