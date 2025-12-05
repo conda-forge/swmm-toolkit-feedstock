@@ -9,7 +9,7 @@ source:
   - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
     sha256: 6454f02b93ec90f09aab5a3bf1f618c3de6cfe456a67288cc4d130e0d692342f
   - git_url: https://github.com/pyswmm/Stormwater-Management-Model
-    git_rev: 24cdf73c3d7cf3bb62f0bff150d5987f1f826889
+    git_rev: 9d7a3f9f2b9bbf34b663c74088640e99caec5b38
     folder: swmm-solver
 
 build:
