@@ -1,5 +1,5 @@
 {% set name = "swmm-toolkit" %}
-{% set version = "0.16.1" %}
+{% set version = "0.16.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,7 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-    sha256: ae213a1b4a0a3c841061bdaf20d74ee37dd45de83eded2d5314362b488066568
-  - git_url: https://github.com/pyswmm/Stormwater-Management-Model
-    git_rev: 24cdf73c3d7cf3bb62f0bff150d5987f1f826889
-    folder: swmm-solver
+    sha256: 6454f02b93ec90f09aab5a3bf1f618c3de6cfe456a67288cc4d130e0d692342f
 
 build:
   script:
@@ -34,6 +31,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - python  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - git-lfs
     - cmake >=3.21
     - swig >=4.4.0
     - make  # [unix]
